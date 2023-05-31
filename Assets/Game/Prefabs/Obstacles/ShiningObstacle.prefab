@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 863827159098004326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 12, y: 12, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 898001126587818501}
@@ -46,9 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cycleLength: 2
-  _xAxisMoveLength: 2
+  _xAxisMoveLength: -8.5
   _shiningObstacle: {fileID: 898001126587818501}
-  _obstaclePrefab: {fileID: 863827159098004320}
 --- !u!1001 &863827157944075758
 PrefabInstance:
   m_ObjectHideFlags: 0

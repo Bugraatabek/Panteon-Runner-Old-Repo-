@@ -7,13 +7,13 @@ namespace Runner.Collision
 {
     public class CoinCollisionHandler : MonoBehaviour
     {
-        public event Action onCoinCollect;
+        public static event Action onCoinCollect;
         private void OnTriggerEnter(Collider other) 
         {
             if(other.gameObject.tag == "Player")
             {
                 Destroy(gameObject);
-                onCoinCollect();
+                onCoinCollect?.Invoke();
             }
         }
     }

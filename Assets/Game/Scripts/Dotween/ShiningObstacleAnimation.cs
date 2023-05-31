@@ -13,7 +13,7 @@ namespace Runner.Anim
         void Start()
         {
             _shiningObstacle.DOLocalRotate(new Vector3(0,360,0),_cycleLength, RotateMode.FastBeyond360).SetLoops(-1,LoopType.Restart).SetEase(Ease.Linear);
-            transform.DOLocalMoveX(_xAxisMoveLength, _cycleLength).SetEase(Ease.Linear).SetLoops(-1,LoopType.Yoyo);
+            transform.DOMoveX(_xAxisMoveLength, _cycleLength).SetEase(Ease.Linear).SetLoops(-1,LoopType.Yoyo);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Runner.Anim
         [SerializeField] private float _cycleLength = 2f;
         void Start()
         {
-        RotateAround();
+            RotateAround();
         }
         private void RotateAround()
         {
