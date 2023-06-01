@@ -4,31 +4,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace Runner.Score.UI
+namespace Runner.UI
 {
     public class ScoreUI : MonoBehaviour
     {
         [SerializeField] TextMeshProUGUI scoreText;
-        ScoreTracker scoreTracker;
-
-        private void Awake() 
-        {
-            scoreTracker = FindObjectOfType<ScoreTracker>();
-        }
 
         private void Start() 
         {
+            ScoreTracker.onScoreChange += UpdateUI;
             UpdateUI();
-        }
-
-        private void OnEnable() 
-        {
-            scoreTracker.onScoreChange += UpdateUI;
         }
 
         private void UpdateUI()
         {
-            scoreText.text = $"Score {scoreTracker.GetScore()}";
+            scoreText.text = $"Score {ScoreTracker.GetScore()}";
         }
     }
 }

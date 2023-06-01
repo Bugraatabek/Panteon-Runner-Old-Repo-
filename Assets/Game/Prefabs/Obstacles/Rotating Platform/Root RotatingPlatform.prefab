@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1664246235976964083}
   - component: {fileID: 3529802223718556473}
   - component: {fileID: 2827686390777675711}
+  - component: {fileID: 1109182865478825090}
+  - component: {fileID: 1277128897510513886}
   m_Layer: 0
   m_Name: Root RotatingPlatform
   m_TagString: Untagged
@@ -96,4 +98,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24de705c53f83984ab19fdc57c041776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateRight: 0
   _cycleLength: 2
+--- !u!114 &1109182865478825090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3169579879931790060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558bf7a9f78c8a244886ffea72dad7a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _direction: -1
+--- !u!135 &1277128897510513886
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3169579879931790060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.45
+  m_Center: {x: 0.000000029802322, y: -0.000000029802322, z: 0}

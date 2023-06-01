@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using Runner.Collision;
 using UnityEngine;
 
-namespace Runner.Score
-{
     public class ScoreTracker : MonoBehaviour
     {
-        private int score;
-        public event Action onScoreChange;
-        
+        private static int score;
+        public static event Action onScoreChange;
+
+        void Awake()
+        {
+            score = 0;
+        }
+            
         private void OnEnable() 
         {
             CoinCollisionHandler.onCoinCollect += OnCoinCollect;
@@ -19,12 +22,15 @@ namespace Runner.Score
         private void OnCoinCollect()
         {
             score += 1;
-            onScoreChange();
+            if(onScoreChange != null)
+            {
+                onScoreChange();
+            }
         }
 
-        public int GetScore()
+        public static int GetScore()
         {
             return score;
         }
     }
-}
+

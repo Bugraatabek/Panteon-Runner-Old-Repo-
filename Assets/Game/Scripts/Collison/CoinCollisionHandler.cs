@@ -13,7 +13,10 @@ namespace Runner.Collision
             if(other.gameObject.tag == "Player")
             {
                 Destroy(gameObject);
-                onCoinCollect?.Invoke();
+                if(onCoinCollect != null)
+                {
+                    onCoinCollect();
+                }
             }
         }
     }
