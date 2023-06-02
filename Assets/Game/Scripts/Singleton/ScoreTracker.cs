@@ -17,6 +17,7 @@ using UnityEngine;
         private void OnEnable() 
         {
             CoinCollisionHandler.onCoinCollect += OnCoinCollect;
+
         }
 
         private void OnCoinCollect()

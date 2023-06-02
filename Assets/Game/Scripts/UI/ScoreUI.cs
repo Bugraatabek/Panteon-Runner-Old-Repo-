@@ -18,7 +18,7 @@ namespace Runner.UI
 
         private void UpdateUI()
         {
-            scoreText.text = $"Score {ScoreTracker.GetScore()}";
+            scoreText.text = $"Score: {ScoreTracker.GetScore()}";
         }
     }
 }
