@@ -24,7 +24,7 @@ namespace Runner.Obstacles
             }    
         }
 
-        public void OnCollisionLogic(GameObject competitor)
+        public void OnCollisionLogic(GameObject competitor, Vector3 contactPoint)
         {
             Rigidbody competitorRB = competitor.GetComponent<Rigidbody>();
             StartCoroutine(StartPushing(competitorRB));

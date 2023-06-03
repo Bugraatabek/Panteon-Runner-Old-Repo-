@@ -8,38 +8,40 @@ namespace Runner.Control
     public class Brush : MonoBehaviour
     {
         [SerializeField] private LayerMask _layerMask;
-        [SerializeField] private Color brushColor;
+        [SerializeField] private Color _brushColor = Color.blue;
+        [SerializeField] private float _brushSize = 0;
+        
 
-        void Update()
+        private void Start() 
         {
-            RaycastHit hit;
-            Ray mousePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(mousePosition,out hit,50f, _layerMask))
-            {
-                if(Input.GetMouseButton(0))
-                {
-                    if(!hit.transform.GetComponent<IPaintable>().IHaveBeenPainted())
-                    {
-                        hit.transform.GetComponent<IPaintable>().PaintMe(brushColor);
-                    }
-                }
-            }
+            PhaseManager.onPaintingPhaseStart += StartPainting;
         }
 
-        private IEnumerator StartPainting()
+        private void StartPainting()
+        {
+            StartCoroutine(PaintingRoutine());
+        }
+
+        private IEnumerator PaintingRoutine()
         {
             while(true)
             {
-                RaycastHit hit;
+                RaycastHit[] hits;
                 Ray mousePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if(Physics.Raycast(mousePosition,out hit,50f, _layerMask))
+                hits = Physics.SphereCastAll(mousePosition,_brushSize, 50f,_layerMask);
+                foreach (RaycastHit hit in hits)
                 {
-                    if(Input.GetMouseButton(0))
+                    var paintable = hit.transform.GetComponent<IPaintable>();
+                    if(paintable != null)
                     {
-                        if(!hit.transform.GetComponent<IPaintable>().IHaveBeenPainted())
+                        if(Input.GetMouseButton(0))
                         {
-                            hit.transform.GetComponent<IPaintable>().PaintMe(brushColor);
+                            if(!paintable.IHaveBeenPainted())
+                            {
+                                paintable.PaintMe(_brushColor);
+                            }
                         }
+                        
                     }
                 }
                 yield return null;     
@@ -50,16 +52,26 @@ namespace Runner.Control
         {
             if(colorName == "Yellow")
             {
-                brushColor = Color.yellow;
+                _brushColor = Color.yellow;
             }
             if(colorName == "Red")
             {
-                brushColor = Color.red;
+                _brushColor = Color.red;
             }
             if(colorName == "Blue")
             {
-                brushColor = Color.blue;
+                _brushColor = Color.blue;
             }
         } 
+
+        public void ChangeBrushSize(float value)
+        {
+            _brushSize = value;
+        }
     }
+
+
+
+
+    
 }

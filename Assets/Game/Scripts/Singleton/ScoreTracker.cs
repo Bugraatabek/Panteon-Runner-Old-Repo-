@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Runner.Collision;
+using Runner.Collisions;
 using UnityEngine;
 
     public class ScoreTracker : MonoBehaviour

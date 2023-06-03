@@ -1,34 +1,38 @@
 using System.Collections;
+using Runner.Control;
 using UnityEngine;
 
 namespace Runner.Obstacles
 {
     public class RotatorObstacle : MonoBehaviour, ISpecialObstacleRoutine
     {
-        private bool shouldPush = false;
+        private bool _shouldPush = false;
+        [SerializeField] float _pushForce = 15f;
 
-        public void OnCollisionLogic(GameObject competitor)
+        public void OnCollisionLogic(GameObject competitor, Vector3 contactPoint)
         {
             Rigidbody competitorRB = competitor.GetComponent<Rigidbody>();
-            StartCoroutine(StartPushing(competitorRB));
+            StartCoroutine(StartPushing(competitorRB, contactPoint));
         }
 
-        private IEnumerator StartPushing(Rigidbody competitorRB)
+        private IEnumerator StartPushing(Rigidbody competitorRB, Vector3 contactPoint)
         {
-            shouldPush = true;
+            contactPoint.y = 0;
+            Vector3 force = -contactPoint;
+            force.y = 0;
+            _shouldPush = true;
+
             while(true)
             {
-                competitorRB.AddForce(Vector3.back * 100f, ForceMode.Impulse);
-                //Vector3 pushDirection = new Vector3(transform.localPosition.x,0,0);
-                
-                if(shouldPush == false) yield break;
+                competitorRB.AddForce(force * _pushForce, ForceMode.Impulse);
+                if(_shouldPush == false) yield break;
                 yield return null;
             }
         }
 
         public void OnExitLogic()
         {
-            shouldPush = false;
+            _shouldPush = false;
         }
     }
 }

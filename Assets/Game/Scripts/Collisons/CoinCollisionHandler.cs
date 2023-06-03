@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Runner.Collision
+namespace Runner.Collisions
 {
     public class CoinCollisionHandler : MonoBehaviour
     {

@@ -803,8 +803,10 @@ GameObject:
   - component: {fileID: 4033837803831453691}
   - component: {fileID: -1715014521661143608}
   - component: {fileID: 1672995707529966478}
+  - component: {fileID: 103838893}
+  - component: {fileID: 648399958}
   m_Layer: 0
-  m_Name: Boy
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -861,10 +863,10 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Constraints: 116
+  m_CollisionDetection: 2
 --- !u!136 &4033837803831453691
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -894,6 +896,7 @@ MonoBehaviour:
   _joystick: {fileID: 0}
   _runSpeed: 8
   _moveSideSpeed: 20
+  _shouldRun: 0
 --- !u!114 &1672995707529966478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -904,6 +907,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 386b4d553f1c3894a990f1be0d17042c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _restartPoint: {fileID: 0}
+--- !u!114 &103838893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5838156144946597142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ddbe0e9eba90d449bdca4df55c88b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _brushColor: {r: 0, g: 0, b: 1, a: 1}
+  _brushSize: 0
+--- !u!114 &648399958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5838156144946597142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbae674481d1330448872bbb842fda5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7495071955331314842
