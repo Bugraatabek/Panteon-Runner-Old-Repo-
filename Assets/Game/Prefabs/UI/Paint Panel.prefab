@@ -75,7 +75,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 500
 --- !u!1 &5279397979405605091
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,9 +111,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 22.5, y: -0.28418}
-  m_SizeDelta: {x: 29.432, y: 0.5679436}
+  m_SizeDelta: {x: 29.432, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5279397979405605095
 CanvasRenderer:
@@ -338,7 +338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 773}
+  m_AnchoredPosition: {x: 0, y: 1073.8}
   m_SizeDelta: {x: 500, y: 176.9365}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5279397980189872890
@@ -384,7 +384,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5279397980698302311}
   - component: {fileID: 5279397980698302312}
-  - component: {fileID: 5279397980698302313}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -409,10 +408,10 @@ RectTransform:
   m_Father: {fileID: 5909743687436165325}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -129.64609}
-  m_SizeDelta: {x: 500, y: 38.484055}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5279397980698302312
 MonoBehaviour:
@@ -465,19 +464,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5279397980698302313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5279397980698302310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bd0009a7d535ec4f9369287139af908, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  brush: {fileID: 0}
 --- !u!1 &5279397980875414931
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5909743687436165325
 RectTransform:
   m_ObjectHideFlags: 0
@@ -619,7 +605,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 70, y: -20.202026}
-  m_SizeDelta: {x: 120, y: 120}
+  m_SizeDelta: {x: 120, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5909743688819904459
 CanvasRenderer:
@@ -718,7 +704,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Brush, Assembly-CSharp
+        m_TargetAssemblyTypeName: Runner.Control.Brush, Assembly-CSharp
         m_MethodName: SetBrushColor
         m_Mode: 5
         m_Arguments:
@@ -767,7 +753,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 430, y: -20.202026}
-  m_SizeDelta: {x: 120, y: 120}
+  m_SizeDelta: {x: 120, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5909743688827240648
 CanvasRenderer:
@@ -866,7 +852,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Brush, Assembly-CSharp
+        m_TargetAssemblyTypeName: Runner.Control.Brush, Assembly-CSharp
         m_MethodName: SetBrushColor
         m_Mode: 5
         m_Arguments:
@@ -915,7 +901,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 250, y: -20.202026}
-  m_SizeDelta: {x: 120, y: 120}
+  m_SizeDelta: {x: 120, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5909743688963903477
 CanvasRenderer:
@@ -1014,7 +1000,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Brush, Assembly-CSharp
+        m_TargetAssemblyTypeName: Runner.Control.Brush, Assembly-CSharp
         m_MethodName: SetBrushColor
         m_Mode: 5
         m_Arguments:
@@ -1060,10 +1046,10 @@ RectTransform:
   m_Father: {fileID: 5909743687436165325}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -30.202026}
-  m_SizeDelta: {x: 500, y: 60.404053}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5909743688975116677
 MonoBehaviour:

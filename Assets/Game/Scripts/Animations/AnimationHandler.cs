@@ -13,17 +13,18 @@ public class AnimationHandler : MonoBehaviour
     }
     void Start()
     {
-        PhaseManager.onRunnerPhaseStart += StartRunnerAnimation;
-        PhaseManager.onPaintingPhaseStart += StartPaintAnimation;
+        //Competitor.onDeath += StartDeathAnimationRoutine;
+        PhaseManager.onRunnerPhaseStart += RunnerAnimation;
+        PhaseManager.onPaintingPhaseStart += PaintAnimation;
     }
 
-    private void StartPaintAnimation()
+    private void PaintAnimation()
     {
         _animator.SetBool("Idle", true);
         _animator.SetBool("Run", false);
     }
 
-    private void StartRunnerAnimation()
+    private void RunnerAnimation()
     {
         _animator.SetBool("Idle", false);
         _animator.SetBool("Run", true);

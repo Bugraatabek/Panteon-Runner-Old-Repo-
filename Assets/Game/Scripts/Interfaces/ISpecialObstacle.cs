@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface ISpecialObstacle
 {
-    public void OnCollisionLogic(GameObject competitor, Vector3 contactPoint);
+    public void OnCollision(Rigidbody competitorRB, Vector3 contactPoint);
 }

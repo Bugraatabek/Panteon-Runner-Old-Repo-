@@ -14,7 +14,6 @@ namespace Runner.Collisions
             {
                 other.transform.position = _paintingPhasePosition.position;
             }
-
         }
     }
 }

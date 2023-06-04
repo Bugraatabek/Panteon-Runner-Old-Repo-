@@ -6,49 +6,72 @@ namespace Runner.Collisions
 {
     public class ObstacleCollisionHandler : MonoBehaviour
     {
+        ISpecialObstacle iSpecialObstacle = null;
+        ISpecialObstacleRoutine iSpecialObstacleRoutine = null;
+
+
+        //Caching
+        private void Awake() 
+        {
+            if(this.GetComponent<ISpecialObstacle>() != null)
+            {
+                iSpecialObstacle = GetComponent<ISpecialObstacle>();
+            }
+
+            if(this.GetComponent<ISpecialObstacleRoutine>() != null)
+            {
+                iSpecialObstacleRoutine = this.GetComponent<ISpecialObstacleRoutine>();
+            }
+        }
+        
         //Trigger
         private void OnTriggerEnter(Collider other) 
         {
-            if(other.gameObject.tag == "Player" || other.gameObject.tag == "AI")
+            Rigidbody competitorRB = other.gameObject.GetComponent<Rigidbody>();
+            if(other.CompareTag("Player")  || other.CompareTag("AI"))
             {
-                if(this.tag == "SpecialObstacle")
+                if(this.CompareTag("SpecialObstacle"))
                 {
-                    this.GetComponent<ISpecialObstacle>().OnCollisionLogic(other.gameObject, new Vector3());
+                    iSpecialObstacle.OnCollision(competitorRB, new Vector3());
                     return;
                 }
-                if(this.GetComponent<ISpecialObstacle>() != null)
+                
+                if(iSpecialObstacle != null)
                 {
-                    this.GetComponent<ISpecialObstacle>().OnCollisionLogic(other.gameObject, new Vector3());
+                    iSpecialObstacle.OnCollision(competitorRB, new Vector3());
                 }
+
                 other.GetComponent<ICompetitor>().OnCollison();
             }
         }
 
         private void OnTriggerExit(Collider other) 
         {
-            if(this.GetComponent<ISpecialObstacleRoutine>() != null)
+            if(iSpecialObstacleRoutine != null)
             {
-                this.GetComponent<ISpecialObstacleRoutine>().OnExitLogic();
+                iSpecialObstacleRoutine.OnExit(other.gameObject.GetComponent<Rigidbody>());
             }
         }
 
 
-        //Collider
+        //Collision
         private void OnCollisionEnter(Collision other) 
         {
-            if(other.gameObject.tag == "Player" || other.gameObject.tag == "AI")
+            Rigidbody competitorRB = other.gameObject.GetComponent<Rigidbody>();
+            if(other.gameObject.CompareTag("Player")  || other.gameObject.CompareTag("AI"))
             {
                 Vector3 contactPoint = other.GetContact(0).normal;
-                if(this.tag == "SpecialObstacle")
+                if(this.tag == "SpecialObstacle" && iSpecialObstacle != null)
                 {
-                    this.GetComponent<ISpecialObstacle>().OnCollisionLogic(other.gameObject, contactPoint);
+                    iSpecialObstacle.OnCollision(competitorRB, contactPoint);
                     return;
                 }
 
-                if(this.GetComponent<ISpecialObstacle>() != null)
+                if(iSpecialObstacle != null)
                 {
-                    this.GetComponent<ISpecialObstacle>().OnCollisionLogic(other.gameObject, contactPoint);
+                    iSpecialObstacle.OnCollision(competitorRB, contactPoint);
                 }
+
                 other.transform.GetComponent<ICompetitor>().OnCollison();
                 
             }
@@ -56,9 +79,9 @@ namespace Runner.Collisions
 
         private void OnCollisionExit(Collision other) 
         {
-            if(this.GetComponent<ISpecialObstacleRoutine>() != null)
+            if(iSpecialObstacleRoutine != null)
             {
-                this.GetComponent<ISpecialObstacleRoutine>().OnExitLogic();
+                iSpecialObstacleRoutine.OnExit(other.gameObject.GetComponent<Rigidbody>());
             }
         }
     }

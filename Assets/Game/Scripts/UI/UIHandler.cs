@@ -11,16 +11,16 @@ namespace Runner.UI
         {
             _runnerPanel.gameObject.SetActive(false);
             _paintPanel.gameObject.SetActive(false);
-            PhaseManager.onRunnerPhaseStart += HandleJoystickUI;
-            PhaseManager.onPaintingPhaseStart += HandlePaintUI;
+            PhaseManager.onRunnerPhaseStart += RunnerPhaseUI;
+            PhaseManager.onPaintingPhaseStart += PaintPhaseUI;
         }
 
-        private void HandleJoystickUI()
+        private void RunnerPhaseUI()
         {
             _runnerPanel.gameObject.SetActive(true);
         }
 
-        private void HandlePaintUI()
+        private void PaintPhaseUI()
         {
             _runnerPanel.gameObject.SetActive(false);
             _paintPanel.gameObject.SetActive(true);

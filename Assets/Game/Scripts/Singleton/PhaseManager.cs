@@ -36,7 +36,6 @@ public class PhaseManager : MonoBehaviour
     {
         if(onPaintingPhaseStart != null)
         {
-            Debug.Log("Starting Painting Phase");
             onPaintingPhaseStart();
         }
     }

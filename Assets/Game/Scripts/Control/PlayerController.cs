@@ -11,6 +11,12 @@ namespace Runner.Control
         [SerializeField] private float _runSpeed = 2f;
         [SerializeField] private float _moveSideSpeed = 20f;
         [SerializeField] private bool _shouldRun = false;
+        Rigidbody rb;
+
+        private void Awake() 
+        {
+            rb = GetComponent<Rigidbody>();    
+        }
 
         private void Start() 
         {
@@ -25,36 +31,28 @@ namespace Runner.Control
 
         private void StartRunnerControls()
         {
-            _shouldRun = true;
-            StartCoroutine(RunningRoutine());
+            _shouldRun = true;;
         }
 
-        private IEnumerator RunningRoutine()
+        private void FixedUpdate() 
         {
-            while(true)
+            if(!_shouldRun) return;
+            if(_joystick.Horizontal != 0)
             {
-                if(!_shouldRun) yield break;
-                if(_shouldRun)
-                {
-                    if(_joystick.Horizontal != 0)
-                    {
-                        transform.Translate(Vector3.right * _moveSideSpeed * _joystick.Horizontal * Time.deltaTime);
-                    }
-                    transform.Translate(Vector3.forward * _runSpeed * Time.deltaTime); 
-                
-                    // Vector3 currentPosition = transform.position;  
-                    // //currentPosition.x = Mathf.Clamp(currentPosition.x, LevelBoundry.leftSideBoundry, LevelBoundry.rightSideBoundry); 
-                    // transform.position = currentPosition;
-                }
-                yield return null;
+                transform.Translate(Vector3.right * _moveSideSpeed * _joystick.Horizontal * Time.fixedDeltaTime);
             }
-        }
+            transform.Translate(Vector3.forward * _runSpeed * Time.fixedDeltaTime);
 
-        public void SetRunSpeed(float value)
-        {
-            _runSpeed = value;
-        }
 
-        
+            // RigidBody Controls
+            // Vector3 currentPosition = transform.position + (Vector3.forward * _runSpeed * Time.fixedDeltaTime);
+            // if(_joystick.Horizontal != 0)
+            // {
+            //     currentPosition += (Vector3.right * _moveSideSpeed * _joystick.Horizontal * Time.fixedDeltaTime);
+            // }
+            // currentPosition.x = Mathf.Clamp(currentPosition.x, LevelBoundry.leftSideBoundry, LevelBoundry.rightSideBoundry);
+            // rb.MovePosition(currentPosition);
+        }
     }
+            
 }

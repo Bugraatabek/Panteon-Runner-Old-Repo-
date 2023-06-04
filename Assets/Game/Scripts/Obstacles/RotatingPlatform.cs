@@ -9,8 +9,9 @@ namespace Runner.Obstacles
         private int _direction = -1;
         [Tooltip("checked = pushRight / unchecked = pushLeft")]
         [SerializeField] private bool _pushRight;
-        [SerializeField] private float _pushForce = 100f; 
-        private bool _shouldPush = false;
+        [SerializeField] private float _pushForce; 
+
+        List<Rigidbody> competitors = new List<Rigidbody>();
         
         private void Awake() 
         {
@@ -24,26 +25,28 @@ namespace Runner.Obstacles
             }    
         }
 
-        public void OnCollisionLogic(GameObject competitor, Vector3 contactPoint)
-        {
-            Rigidbody competitorRB = competitor.GetComponent<Rigidbody>();
-            StartCoroutine(StartPushing(competitorRB));
-        }
 
-        private IEnumerator StartPushing(Rigidbody competitorRB)
+        private void FixedUpdate() 
         {
-            _shouldPush = true;
-            while(true)
+            if(competitors.Count == 0) 
             {
-                competitorRB.AddForce(Vector3.right * _direction * _pushForce, ForceMode.VelocityChange);
-                if(_shouldPush == false) yield break;
-                yield return null;
+                return;
+            }
+
+            foreach (var competitor in competitors)
+            {
+                competitor.AddForce(Vector3.right * _direction * _pushForce, ForceMode.VelocityChange);
             }
         }
 
-        public void OnExitLogic()
+        public void OnCollision(Rigidbody competitorRB, Vector3 contactPoint)
         {
-            _shouldPush = false;
+            competitors.Add(competitorRB);
+        }
+
+        public void OnExit(Rigidbody rb)
+        {
+            competitors.Remove(rb);
         }
     }
 

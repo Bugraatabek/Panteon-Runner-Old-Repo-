@@ -15,11 +15,10 @@ namespace Runner.Obstacles
             colors[3] = Color.green;
         }
 
-        public void OnCollisionLogic(GameObject competitor, Vector3 contactPoint)
+        public void OnCollision(Rigidbody competitorRB, Vector3 contactPoint)
         {
             Color randomColor = colors[Random.Range(0,4)];
             particleSystemRenderer.material.color = randomColor;
-            
         }
     }
 }
