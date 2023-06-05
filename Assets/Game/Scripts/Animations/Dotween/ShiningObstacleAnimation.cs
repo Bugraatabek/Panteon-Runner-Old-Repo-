@@ -10,9 +10,18 @@ namespace Runner.Anim
         [SerializeField] private float _cycleLength = 2f;
         [SerializeField] private float _xAxisMoveLength = 2f;
         [SerializeField] private Transform _shiningObstacle;
+        
+        [Tooltip("If unchecked the object will move towards negative on x axis")]
+        [SerializeField] private bool _moveToPositive = true;
+
         void Start()
         {
             _shiningObstacle.DOLocalRotate(new Vector3(0,360,0),_cycleLength, RotateMode.FastBeyond360).SetLoops(-1,LoopType.Restart).SetEase(Ease.Linear);
+            if(!_moveToPositive)
+            {
+                transform.DOMoveX(-_xAxisMoveLength, _cycleLength).SetEase(Ease.Linear).SetLoops(-1,LoopType.Yoyo);
+                return;
+            }
             transform.DOMoveX(_xAxisMoveLength, _cycleLength).SetEase(Ease.Linear).SetLoops(-1,LoopType.Yoyo);
         }
     }

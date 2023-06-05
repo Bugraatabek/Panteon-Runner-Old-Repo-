@@ -1,6 +1,7 @@
 using System.Collections;
 using Runner.Control;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Runner.Obstacles
 {
@@ -12,9 +13,11 @@ namespace Runner.Obstacles
         public void OnCollision(Rigidbody competitorRB, Vector3 contactPoint)
         {
             contactPoint.y = 0;
-            Vector3 force = -contactPoint;
-            force.y = 0;
-            competitorRB.AddForce(force * _pushForce, ForceMode.Impulse);
+            Vector3 forceDirection = -contactPoint;
+            forceDirection.y = 0;
+            competitorRB.AddForce(forceDirection * _pushForce, ForceMode.Impulse);
         }
+
+       
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SpecialObstacle
   - AI
+  - Obstacle
   layers:
   - Default
   - TransparentFX

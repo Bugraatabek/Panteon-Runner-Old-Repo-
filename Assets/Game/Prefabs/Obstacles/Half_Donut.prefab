@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8783389080239069699}
   m_Layer: 0
   m_Name: MovingStick
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -60,12 +60,13 @@ GameObject:
   - component: {fileID: 6133909166405615037}
   - component: {fileID: 451524540821307824}
   - component: {fileID: 7671798027307526244}
+  - component: {fileID: 4862029200070720905}
   m_Layer: 0
   m_Name: Half_Donut_01
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1346924401963579591
 Transform:
@@ -157,6 +158,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9474fd28671789e4ba5bfb6c21d4a626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &4862029200070720905
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3167840807798212320}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.0995, y: 0.034, z: 0.155}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.082, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4177555213275210302
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,14 +185,15 @@ GameObject:
   - component: {fileID: 1170282662942331089}
   - component: {fileID: 717650484701271738}
   - component: {fileID: 4698074579129894147}
-  - component: {fileID: 7105397836909607246}
   - component: {fileID: 3569565409882192167}
+  - component: {fileID: 5522867816447599084}
+  - component: {fileID: 5671688367197175292}
   m_Layer: 0
   m_Name: Half_Donut_Stick
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1170282662942331089
 Transform:
@@ -242,20 +260,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7105397836909607246
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4177555213275210302}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.03
-  m_Height: 0.42
-  m_Direction: 0
-  m_Center: {x: 0.16986036, y: 0, z: 4.656613e-10}
 --- !u!114 &3569565409882192167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +272,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9474fd28671789e4ba5bfb6c21d4a626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &5522867816447599084
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4177555213275210302}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.21, y: 0.0125, z: 0.0125}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.17, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!65 &5671688367197175292
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4177555213275210302}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.33967575, y: 0.02, z: 0.020000005}
+  m_Center: {x: 0.16986029, y: 0, z: 4.656614e-10}
 --- !u!1 &5059582347116067240
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +313,7 @@ GameObject:
   - component: {fileID: 6669014899203663470}
   m_Layer: 0
   m_Name: Stationary
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -325,7 +358,7 @@ GameObject:
   - component: {fileID: 6136845184706805379}
   m_Layer: 0
   m_Name: Half_Donut
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -372,12 +405,13 @@ GameObject:
   - component: {fileID: 5356832214948405977}
   - component: {fileID: 6352685476668783502}
   - component: {fileID: 4496901049307849345}
+  - component: {fileID: 7371653072956318034}
   m_Layer: 0
   m_Name: Half_Donut_Sphere
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5356832214948405977
 Transform:
@@ -444,6 +478,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &7371653072956318034
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7438035359478569386}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.024, y: 0.024, z: 0.024}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8826705859652239040
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,9 +507,10 @@ GameObject:
   - component: {fileID: 2998650507665096072}
   - component: {fileID: 1803714760018508503}
   - component: {fileID: 1699477756255254674}
+  - component: {fileID: 608355435524014246}
   m_Layer: 0
   m_Name: Half_Donut_Side
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -554,3 +605,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9474fd28671789e4ba5bfb6c21d4a626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &608355435524014246
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8826705859652239040}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.195, y: 0.5775, z: 0.075}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.453, z: 0}
+  m_TimeToStationary: 0.5

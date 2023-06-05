@@ -9,9 +9,9 @@ namespace Runner.Collisions
         [SerializeField] private Transform _paintingPhasePosition; 
         private void OnTriggerEnter(Collider other) 
         {
-            PhaseManager.PaintingPhase();
             if(other.gameObject.tag == "Player")
             {
+                PhaseManager.PaintingPhase();
                 other.transform.position = _paintingPhasePosition.position;
             }
         }

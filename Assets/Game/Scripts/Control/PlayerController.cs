@@ -11,12 +11,6 @@ namespace Runner.Control
         [SerializeField] private float _runSpeed = 2f;
         [SerializeField] private float _moveSideSpeed = 20f;
         [SerializeField] private bool _shouldRun = false;
-        Rigidbody rb;
-
-        private void Awake() 
-        {
-            rb = GetComponent<Rigidbody>();    
-        }
 
         private void Start() 
         {

@@ -12,6 +12,7 @@ namespace Runner.Obstacles
         [SerializeField] private float _pushForce; 
 
         List<Rigidbody> competitors = new List<Rigidbody>();
+        List<IAIController> aIControllers = new List<IAIController>();
         
         private void Awake() 
         {
@@ -28,11 +29,8 @@ namespace Runner.Obstacles
 
         private void FixedUpdate() 
         {
-            if(competitors.Count == 0) 
-            {
-                return;
-            }
-
+            if(competitors.Count == 0) return;
+            
             foreach (var competitor in competitors)
             {
                 competitor.AddForce(Vector3.right * _direction * _pushForce, ForceMode.VelocityChange);
@@ -42,11 +40,15 @@ namespace Runner.Obstacles
         public void OnCollision(Rigidbody competitorRB, Vector3 contactPoint)
         {
             competitors.Add(competitorRB);
+            if(competitorRB.CompareTag("Player")) return;
+            competitorRB.GetComponent<IAIController>().Steer(Vector3.right * _direction * -1);
         }
 
         public void OnExit(Rigidbody rb)
         {
             competitors.Remove(rb);
+            if(rb.CompareTag("Player")) return;
+            rb.GetComponent<IAIController>().StopSteering();
         }
     }
 
