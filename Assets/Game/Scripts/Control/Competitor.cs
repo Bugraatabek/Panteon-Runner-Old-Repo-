@@ -14,7 +14,6 @@ public class Competitor : MonoBehaviour, ICompetitor
     {
         rb = GetComponent<Rigidbody>(); 
         navMesh = GetComponent<NavMeshAgent>();
-        
     }
 
     public void OnCollison()

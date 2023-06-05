@@ -11,7 +11,11 @@ namespace Runner.Control
         NavMeshAgent navMesh;
         [SerializeField] Transform destinationPrefab; 
         [SerializeField] private bool _shouldRun = false;
-        [SerializeField] private float _steerSpeed = 25f;
+        
+        [SerializeField] private float _randomSteeringSpeedFloor = 17f;
+        [SerializeField] private float _randomSteeringSpeedCeiling = 17.5f;
+        private float _steerSpeed;
+
         private bool _shouldSteer = false;
         Vector3 _steerDirection;
         Vector3 destination;
@@ -21,6 +25,7 @@ namespace Runner.Control
         {
             navMesh = GetComponent<NavMeshAgent>();
             destination = destinationPrefab.position;
+            _steerSpeed = UnityEngine.Random.Range(_randomSteeringSpeedFloor,_randomSteeringSpeedCeiling);
         }
 
         private void Start() 
@@ -39,7 +44,6 @@ namespace Runner.Control
                 if(_shouldSteer)
                 {
                     transform.Translate(_steerDirection * _steerSpeed * Time.fixedDeltaTime);
-                    //maybe pick random _steerSpeed between 20-20.2;
                 }
             }
         }

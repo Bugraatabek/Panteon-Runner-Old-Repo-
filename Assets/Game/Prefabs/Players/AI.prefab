@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationPrefab: {fileID: 0}
   _shouldRun: 0
+  _steerSpeed: 17
 --- !u!1001 &309494794559676762
 PrefabInstance:
   m_ObjectHideFlags: 0

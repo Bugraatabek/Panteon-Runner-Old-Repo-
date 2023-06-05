@@ -6,6 +6,7 @@ public class PaintPercentageTracker : MonoBehaviour
 {
     private static int _percentage;
     public static event Action onPercentageUpdate;
+    public static event Action onGameFinished;
 
     private void Awake() 
     {
@@ -23,6 +24,13 @@ public class PaintPercentageTracker : MonoBehaviour
         if(onPercentageUpdate != null)
         {
             onPercentageUpdate();
+        }
+        if(_percentage == 100)
+        {
+            if(onGameFinished != null)
+            {
+                onGameFinished();
+            }
         }
         
     }

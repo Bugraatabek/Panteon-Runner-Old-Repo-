@@ -8,10 +8,20 @@ public class PhaseManager : MonoBehaviour
     private bool _runnerPhase = false;
     public static event Action onRunnerPhaseStart;
     public static event Action onPaintingPhaseStart;
+    public static event Action onGameFinished;
 
     private void Start() 
     {
+        PaintPercentageTracker.onGameFinished += EndGame;
         StartCoroutine(GameLogic());
+    }
+
+    private void EndGame()
+    {
+        if(onGameFinished != null)
+        {
+            onGameFinished();
+        }
     }
 
     private IEnumerator GameLogic()
