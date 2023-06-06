@@ -30,8 +30,9 @@ namespace Runner.Control
 
         private void Start() 
         {
-            PhaseManager.onRunnerPhaseStart += StartRunnerControls;
-            PhaseManager.onPaintingPhaseStart += StopRunnerControls;
+            
+            Singleton.Instance.PhaseManager.onRunnerPhaseStart += StartRunnerControls;
+            Singleton.Instance.PhaseManager.onPaintingPhaseStart += StopRunnerControls;
         }
 
         private void FixedUpdate() 

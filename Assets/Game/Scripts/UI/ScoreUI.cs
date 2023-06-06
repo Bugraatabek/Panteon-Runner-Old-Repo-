@@ -10,15 +10,16 @@ namespace Runner.UI
     {
         [SerializeField] TextMeshProUGUI scoreText;
 
+
         private void Start() 
         {
-            ScoreTracker.onScoreChange += UpdateUI;
+            Singleton.Instance.ScoreTracker.onScoreChange += UpdateUI;
             UpdateUI();
         }
 
         private void UpdateUI()
         {
-            scoreText.text = $"Score: {ScoreTracker.GetScore()}";
+            scoreText.text = $"Score: {Singleton.Instance.ScoreTracker.score}";
         }
     }
 }

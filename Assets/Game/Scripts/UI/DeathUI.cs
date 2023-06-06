@@ -9,13 +9,13 @@ namespace Runner.UI
 
         private void Start() 
         {
-            DeathTracker.onDeath += UpdateUI;
+            Singleton.Instance.DeathTracker.onDeath += UpdateUI;
             UpdateUI();
         }
 
         private void UpdateUI()
         {
-            deathText.text = $"Death: {DeathTracker.GetDeathCount()}";
+            deathText.text = $"Death: {Singleton.Instance.DeathTracker.deathCount}";
         }
     }
 }

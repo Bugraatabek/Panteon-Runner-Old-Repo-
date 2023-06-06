@@ -13,11 +13,12 @@ namespace Runner.Control
         [SerializeField] private float _brushSize = 0;
         [SerializeField] private bool _paintingPhase = false;
         [SerializeField] Slider _mainSlider;
+       
         
 
         private void Start() 
         {
-            PhaseManager.onPaintingPhaseStart += StartPainting;
+            Singleton.Instance.PhaseManager.onPaintingPhaseStart += StartPainting;
         }
 
         private void FixedUpdate() 

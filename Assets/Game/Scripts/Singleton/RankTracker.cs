@@ -7,8 +7,12 @@ public class RankTracker : MonoBehaviour
 {
     List<Competitor> competitors = new List<Competitor>();
     List<float> competitorPositions = new List<float>();
-    public static int totalCompetitorsCount;
-    public static int playersRank;
+    
+    private int _competitorCount;
+    private int _playersRank;
+    public int competitorCount {get {return _competitorCount;}}
+    public int playersRank {get {return _playersRank;}}
+    
     Transform playerTransform;
     
 
@@ -19,7 +23,7 @@ public class RankTracker : MonoBehaviour
         {
             competitors.Add(competitor);
         }
-        totalCompetitorsCount = competitors.Count;
+        _competitorCount = competitors.Count;
     }
     
     private void FixedUpdate() 
@@ -40,7 +44,7 @@ public class RankTracker : MonoBehaviour
         {
             if(competitorPositions[i] == playerTransform.position.z)
             {
-                playersRank = (10-i);
+                _playersRank = (10-i);
             }
         }
     }
@@ -48,17 +52,5 @@ public class RankTracker : MonoBehaviour
     private float GetCompetitorPosition(Competitor competitor)
     {
         return competitor.transform.position.z;
-    }
-
-   
-    //Public Getters
-    public static int GetTotalCompetitorCount()
-    {
-        return totalCompetitorsCount;
-    }
-
-    public static int GetPlayersRank()
-    {
-        return playersRank;
     }
 }

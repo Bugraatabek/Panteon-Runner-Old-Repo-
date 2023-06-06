@@ -16,7 +16,8 @@ public class CameraHandler : MonoBehaviour
 
     private void Start() 
     {
-        PhaseManager.onPaintingPhaseStart += SwitchCamera;
+        
+        Singleton.Instance.PhaseManager.onPaintingPhaseStart += SwitchCamera;
     }
 
     private void SwitchCamera()

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class DeathTracker : MonoBehaviour 
 {
-    private static int deathCount;
-    public static event Action onDeath;
-
+    private int _deathCount;
+    public int deathCount { get{ return _deathCount; } }
+    public event Action onDeath;
 
     private void Awake() 
     {
-        deathCount = 0;
+        _deathCount = 0;
     }
 
     private void OnEnable() 
@@ -20,15 +20,10 @@ public class DeathTracker : MonoBehaviour
 
     private void CountDeath()
     {
-        deathCount += 1;
+        _deathCount += 1;
         if(onDeath != null)
         {
             onDeath();
         }
-    }
-
-    public static int GetDeathCount()
-    {
-        return deathCount;
     }
 }

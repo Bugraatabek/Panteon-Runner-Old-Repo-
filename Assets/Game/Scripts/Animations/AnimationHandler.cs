@@ -14,8 +14,8 @@ public class AnimationHandler : MonoBehaviour
     void Start()
     {
         //Competitor.onDeath += StartDeathAnimationRoutine;
-        PhaseManager.onRunnerPhaseStart += RunnerAnimation;
-        PhaseManager.onPaintingPhaseStart += PaintAnimation;
+        Singleton.Instance.PhaseManager.onRunnerPhaseStart += RunnerAnimation;
+        Singleton.Instance.PhaseManager.onPaintingPhaseStart += PaintAnimation;
     }
 
     private void PaintAnimation()

@@ -9,13 +9,13 @@ namespace Runner.UI
         [SerializeField] TextMeshProUGUI percentageText;
         private void Start() 
         {
-            PaintPercentageTracker.onPercentageUpdate += UpdateUI;
+            Singleton.Instance.PaintPercentageTracker.onPercentageUpdate += UpdateUI;
             UpdateUI();
         }
 
         private void UpdateUI()
         {
-            percentageText.text = $"%{PaintPercentageTracker.GetPercentage()}";
+            percentageText.text = $"%{Singleton.Instance.PaintPercentageTracker.percentage}";
         }
     }
 }

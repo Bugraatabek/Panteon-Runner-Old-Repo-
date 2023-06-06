@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PaintPercentageTracker : MonoBehaviour 
 {
-    private static int _percentage;
-    public static event Action onPercentageUpdate;
-    public static event Action onGameFinished;
+    private int _percentage;
+    public int percentage { get {return _percentage; } }
+    public event Action onPercentageUpdate;
+    public event Action onGameFinished;
 
     private void Awake() 
     {
@@ -32,11 +33,5 @@ public class PaintPercentageTracker : MonoBehaviour
                 onGameFinished();
             }
         }
-        
-    }
-
-    public static int GetPercentage()
-    {
-        return _percentage;
     }
 }

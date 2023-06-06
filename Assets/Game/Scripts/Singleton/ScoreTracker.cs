@@ -6,12 +6,13 @@ using UnityEngine;
 
     public class ScoreTracker : MonoBehaviour
     {
-        private static int score;
-        public static event Action onScoreChange;
+        private int _score;
+        public int score { get {return _score;}}
+        public event Action onScoreChange;
 
         void Awake()
         {
-            score = 0;
+            _score = 0;
         }
             
         private void OnEnable() 
@@ -21,16 +22,11 @@ using UnityEngine;
 
         private void OnCoinCollect()
         {
-            score += 5;
+            _score += 5;
             if(onScoreChange != null)
             {
                 onScoreChange();
             }
-        }
-
-        public static int GetScore()
-        {
-            return score;
         }
     }
 

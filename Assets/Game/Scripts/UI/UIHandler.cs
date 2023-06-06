@@ -7,15 +7,16 @@ namespace Runner.UI
         [SerializeField] private RectTransform _runnerPanel;
         [SerializeField] private RectTransform _paintPanel;
         [SerializeField] private RectTransform _gameFinishedPanel;
+        
 
         private void Start() 
         {
+            Singleton.Instance.PhaseManager.onRunnerPhaseStart += RunnerPhaseUI;
+            Singleton.Instance.PhaseManager.onPaintingPhaseStart += PaintPhaseUI;
+            Singleton.Instance.PhaseManager.onGameFinished += GameFinishedUI;
             _runnerPanel.gameObject.SetActive(false);
             _paintPanel.gameObject.SetActive(false);
             _gameFinishedPanel.gameObject.SetActive(false);
-            PhaseManager.onRunnerPhaseStart += RunnerPhaseUI;
-            PhaseManager.onPaintingPhaseStart += PaintPhaseUI;
-            PhaseManager.onGameFinished += GameFinishedUI;
         }
 
         private void RunnerPhaseUI()

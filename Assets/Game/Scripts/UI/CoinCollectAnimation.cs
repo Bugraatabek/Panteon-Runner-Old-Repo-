@@ -24,6 +24,11 @@ namespace Runner.UI
             CoinCollisionHandler.onCoinCollect += StartAnimation;
         }
 
+        private void OnDisable() 
+        {
+            CoinCollisionHandler.onCoinCollect -= StartAnimation;
+        }
+
         private void Awake() 
         {
             coinPool = new ObjectPool<UICoin>(CreateCoin,OnGet,OnRelease, maxSize: 15);

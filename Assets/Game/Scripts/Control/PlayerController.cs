@@ -11,11 +11,12 @@ namespace Runner.Control
         [SerializeField] private float _runSpeed = 2f;
         [SerializeField] private float _moveSideSpeed = 20f;
         [SerializeField] private bool _shouldRun = false;
+      
 
         private void Start() 
         {
-            PhaseManager.onRunnerPhaseStart += StartRunnerControls;
-            PhaseManager.onPaintingPhaseStart += StopRunnerControls;
+            Singleton.Instance.PhaseManager.onRunnerPhaseStart += StartRunnerControls;
+            Singleton.Instance.PhaseManager.onPaintingPhaseStart += StopRunnerControls;
         }
 
         private void StopRunnerControls()
@@ -33,6 +34,7 @@ namespace Runner.Control
             if(!_shouldRun) return;
             if(_joystick.Horizontal != 0)
             {
+                Debug.Log("hi");
                 transform.Translate(Vector3.right * _moveSideSpeed * _joystick.Horizontal * Time.fixedDeltaTime);
             }
             transform.Translate(Vector3.forward * _runSpeed * Time.fixedDeltaTime);

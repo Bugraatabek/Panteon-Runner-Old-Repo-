@@ -9,6 +9,7 @@ namespace Runner.Collisions
     public class EndGameTrigger : MonoBehaviour
     {
         [SerializeField] private Transform _paintingPhasePosition;
+
         private void OnTriggerEnter(Collider other) 
         {
             if(other.CompareTag("AI"))
@@ -24,7 +25,7 @@ namespace Runner.Collisions
                     ai.gameObject.SetActive(false);
                 } 
 
-                PhaseManager.PaintingPhase();
+                Singleton.Instance.PhaseManager.PaintingPhase();
                 other.transform.position = _paintingPhasePosition.position;
             }
         }
