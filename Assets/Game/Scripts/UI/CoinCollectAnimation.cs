@@ -38,7 +38,7 @@ namespace Runner.UI
         {
             coin.gameObject.SetActive(true);
             coin.transform.localPosition = startingPosition;
-            coin.transform.DOMove(destination.position, 1f).SetEase(Ease.InSine).OnComplete(() => {coinPool.Release(coin);});
+            coin.transform.DOMove(destination.position, 1f).SetEase(Ease.Linear).OnComplete(() => {coinPool.Release(coin);});
         }
 
         private void OnRelease(UICoin coin)
