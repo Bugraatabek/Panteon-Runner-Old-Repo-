@@ -842,7 +842,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2c6a08892bbfa05448982892281b85ad, type: 3}
   m_Controller: {fileID: 9100000, guid: 92ac6d4ddafbd2f4692102535c159f11, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
@@ -867,7 +867,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!136 &4033837803831453691
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -896,7 +896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _joystick: {fileID: 0}
   _runSpeed: 8
-  _moveSideSpeed: 20
+  _moveSideSpeed: 15
   _shouldRun: 0
 --- !u!114 &1672995707529966478
 MonoBehaviour:
@@ -963,7 +963,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!1 &7495071955331314842
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,10 +11,8 @@ GameObject:
   - component: {fileID: 5649077732359208484}
   - component: {fileID: 8775921181092606337}
   - component: {fileID: 6786540465799365963}
-  - component: {fileID: 465355929526048184}
-  - component: {fileID: 8500957275770413794}
   m_Layer: 0
-  m_Name: Coin
+  m_Name: UICoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4985026191886296222}
   m_LocalRotation: {x: -0.00000029066146, y: 0.7071068, z: 0.7071068, w: -0.0000002975999}
   m_LocalPosition: {x: -7.34, y: 2.32, z: -3.337}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,30 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &465355929526048184
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4985026191886296222}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.97516215, y: 0.120612755, z: 0.9782529}
-  m_Center: {x: 0.000011235481, y: 0.00000007078305, z: -0.000010564926}
---- !u!114 &8500957275770413794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4985026191886296222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c04df44c45972274aa98dc42097a4271, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreUI: {fileID: 0}
-  uiCoinPrefab: {fileID: 0}

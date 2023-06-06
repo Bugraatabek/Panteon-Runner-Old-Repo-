@@ -17,12 +17,11 @@ using UnityEngine;
         private void OnEnable() 
         {
             CoinCollisionHandler.onCoinCollect += OnCoinCollect;
-
         }
 
         private void OnCoinCollect()
         {
-            score += 1;
+            score += 5;
             if(onScoreChange != null)
             {
                 onScoreChange();
