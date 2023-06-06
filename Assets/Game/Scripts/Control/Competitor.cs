@@ -2,32 +2,41 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Competitor : MonoBehaviour, ICompetitor
+namespace Runner.Control
 {
-    [SerializeField] private Transform _restartPoint;
-    public static event Action onDeath;
-    
-    NavMeshAgent navMesh;
-    Rigidbody rb;
-
-    private void Awake() 
+    public class Competitor : MonoBehaviour, ICompetitor
     {
-        rb = GetComponent<Rigidbody>(); 
-        navMesh = GetComponent<NavMeshAgent>();
-    }
+        [SerializeField] AudioClip onDeathSound; // Sound played when the player dies
+        [SerializeField] private Transform _restartPoint; // Restart point for the competitor
+        public static event Action onDeath; // Event triggered when the player dies
 
-    public void OnCollison()
-    {
-        rb.isKinematic = true;
-        navMesh.enabled = false;
-        transform.position = _restartPoint.position;
-        navMesh.enabled = true;
-        rb.isKinematic = false;
-        
-    
-        if(onDeath != null && this.gameObject.CompareTag("Player"))
+        NavMeshAgent navMesh;
+        Rigidbody rb;
+
+        private void Awake()
         {
-            onDeath();
+            rb = GetComponent<Rigidbody>();
+            navMesh = GetComponent<NavMeshAgent>();
+        }
+
+        public void OnCollison()
+        {
+            rb.isKinematic = true; // Disable rigidbody physics
+            navMesh.enabled = false; // Disable NavMeshAgent
+            transform.position = _restartPoint.position; // Reset the competitor's position to the restart point
+            navMesh.enabled = true; // Enable NavMeshAgent
+            rb.isKinematic = false; // Enable rigidbody physics
+
+            if (onDeath != null && this.gameObject.CompareTag("Player"))
+            {
+                if (onDeathSound != null)
+                {
+                    Singleton.Instance.Fader.FadeOutImmediate(); // Fade out the screen immidiately
+                    Singleton.Instance.AudioPlayer.PlayAudio(onDeathSound, volume: 0.5f); // Play the death sound
+                    Singleton.Instance.Fader.FadeIn(1.2f); // Fade in the screen
+                }
+                onDeath(); // Trigger the onDeath event
+            }
         }
     }
 }

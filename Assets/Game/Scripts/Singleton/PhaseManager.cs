@@ -3,59 +3,60 @@ using System.Collections;
 using Runner.Control;
 using UnityEngine;
 
-public class PhaseManager : MonoBehaviour 
+public class PhaseManager : MonoBehaviour
 {
-    private bool _runnerPhase = false;
-    public event Action onRunnerPhaseStart;
-    public event Action onPaintingPhaseStart;
-    public event Action onGameFinished;
+    private bool _runnerPhase = false;   // Flag indicating if it's currently the runner phase
+    public event Action onRunnerPhaseStart;        // Event triggered when the runner phase starts
+    public event Action onPaintingPhaseStart;      // Event triggered when the painting phase starts
+    public event Action onGameFinished;            // Event triggered when the game finishes
 
-    private void Start() 
+    private void Start()
     {
+        // Subscribe to the onGameFinished event of the PaintPercentageTracker
         Singleton.Instance.PaintPercentageTracker.onGameFinished += EndGame;
-        StartCoroutine(GameLogic());
+
+        StartCoroutine(WaitAndStartRace());   // Start the race coroutine
     }
 
     private void EndGame()
     {
-        if(onGameFinished != null)
+        if (onGameFinished != null)
         {
-            onGameFinished();
+            onGameFinished();   // Trigger the onGameFinished event
         }
     }
 
-    private IEnumerator GameLogic()
+    private IEnumerator WaitAndStartRace()
     {
-        while(true)
+        while (true)
         {
-            if(!_runnerPhase)
+            if (!_runnerPhase)
             {
-                _runnerPhase = true;
-                yield return new WaitForSeconds(3);
+                _runnerPhase = true;   // Set the runner phase flag to true
+                yield return new WaitForSeconds(3);   // Wait for 3 seconds before game starts
             }
 
-            if(_runnerPhase)
+            if (_runnerPhase)
             {
-                RunnerPhase();
-                yield break;
+                RunnerPhase();   // Start the runner phase
+                yield break;   // Exit the coroutine
             }
         }
     }
 
     public void PaintingPhase()
     {
-        if(onPaintingPhaseStart != null)
+        if (onPaintingPhaseStart != null)
         {
-            onPaintingPhaseStart();
+            onPaintingPhaseStart();   // Trigger the onPaintingPhaseStart event
         }
     }
 
     private void RunnerPhase()
     {
-        if(onRunnerPhaseStart != null)
+        if (onRunnerPhaseStart != null)
         {
-            onRunnerPhaseStart();
+            onRunnerPhaseStart();   // Trigger the onRunnerPhaseStart event
         }
     }
-
 }

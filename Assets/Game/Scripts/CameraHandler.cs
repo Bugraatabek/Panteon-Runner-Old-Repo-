@@ -14,10 +14,14 @@ public class CameraHandler : MonoBehaviour
         _paintCam.SetActive(false);
     }
 
-    private void Start() 
+    private void OnEnable() 
     {
-        
         Singleton.Instance.PhaseManager.onPaintingPhaseStart += SwitchCamera;
+    }
+
+    private void OnDisable() 
+    {
+        Singleton.Instance.PhaseManager.onPaintingPhaseStart -= SwitchCamera;
     }
 
     private void SwitchCamera()

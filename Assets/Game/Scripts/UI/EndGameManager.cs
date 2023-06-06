@@ -4,15 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 
-public class EndGameManager : MonoBehaviour
+namespace RUnner.UI
 {
-    public void RestartGame()
+    public class EndGameManager : MonoBehaviour
     {
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
-    }
+        public void RestartGame()
+        {
+            SceneManager.LoadScene(0);
+        }
 
-    public void ExitGame()
-    {
-        Application.Quit();
+        public void ExitGame()
+        {
+            Application.Quit();
+        }
     }
 }

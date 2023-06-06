@@ -10,28 +10,28 @@ namespace Runner.Painting
         MeshRenderer meshRenderer;
         Color startColor;
         public static event Action onPaint;
-        private void Awake() 
+
+        private void Awake()
         {
-            meshRenderer = GetComponent<MeshRenderer>();
-            startColor = GetComponent<MeshRenderer>().material.color;
+            meshRenderer = GetComponent<MeshRenderer>(); // Get the MeshRenderer component
+            startColor = meshRenderer.material.color; // Store the initial color of the material
         }
 
+
+        //IPaintable
         public bool IHaveBeenPainted()
         {
-            if(meshRenderer.material.color != startColor)
-            {
-                return true;
-            }
-            return false;
+            // Check if the current color of the material is different from the initial color
+            return meshRenderer.material.color != startColor;
         }
 
         public void PaintMe(Color color)
         {
-            if(onPaint!= null)
+            if (onPaint != null)
             {
-                onPaint();
+                onPaint(); // Invoke the onPaint event
             }
-            meshRenderer.material.color = color;
+            meshRenderer.material.color = color; // Set the color of the material to the specified color
         }
     }
 }
